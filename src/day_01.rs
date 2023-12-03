@@ -79,9 +79,7 @@ pub fn calibration_value(input: &Vec<String>) -> i32 {
     let first_num = find_num(line, &text_number, false);
     let last_num = find_num(line, &text_number, true);
     let value = format!("{}{}", first_num, last_num);
-    let new_sum = sum + i32::from_str_radix(&value, 10).expect("Line contained no numbers");
-    println!("{} : {} + {} = {} ", line, value, sum, new_sum);
-    sum = new_sum;
+    sum += i32::from_str_radix(&value, 10).expect("Line contained no numbers");
   }
   sum
 }
