@@ -3,11 +3,14 @@ use std::env;
 
 use day_02::Game;
 use day_04::Card;
+use day_06::{Race, number_of_ways_to_win};
 mod day_01;
 
 mod day_02;
 
 mod day_04;
+
+mod day_06;
 
 fn main() {
     // Day 01
@@ -20,6 +23,9 @@ fn main() {
 
     let answer4 = day04();
     println!("Day 4: {}, {}", answer4.0, answer4.1);
+
+    let answer6 = day06();
+    println!("Day 6: {}, {}", answer6.0, answer6.1);
 }
 
 fn day01() -> i32 {
@@ -68,4 +74,12 @@ fn day04() -> (i32, i32) {
         i += 1;
     }
     (sum, 0)
+}
+
+fn day06() -> (i64, i64) {
+    let file = env::current_dir().unwrap().join("input/day_06_input.txt");
+    let races = Race::from(&file).unwrap();
+    let single_race = Race::from_combined(&file);
+    let answer_one = number_of_ways_to_win(&races);
+    (answer_one, single_race.travel_times())
 }

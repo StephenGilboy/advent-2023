@@ -50,8 +50,8 @@ impl Card {
 fn card_from_should_create_card() {
   let want = Card {
     id: 1,
-    card_numbers: Vec::from_iter([41,48,83,86,17]),
-    winning_numbers: Vec::from_iter([83, 86, 6, 31, 17, 9, 48, 53])
+    winning_numbers: Vec::from_iter([41,48,83,86,17]),
+    card_numbers: Vec::from_iter([83, 86, 6, 31, 17, 9, 48, 53])
   };
   let got = Card::from(1, " 41 48 83 86 17 | 83 86  6 31 17  9 48 53");
   
